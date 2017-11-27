@@ -291,3 +291,24 @@ var setVolume = function(volume) {
 var getSongNumberCell = function(number) {
     return $('.song-item-number[data-song-number="' + number + '"]');
 };
+
+var setCurrentTimeInPlayerBar = function(currentTime){
+    $('.current-time')text(filterTimeCode(currentTime));
+};
+var setTotalTimeInPlayerBar = function(totalTime){
+    $('.total-time')text(filterTimeCode(totalTime));
+};
+var filterTimeCode = function(timeInSeconds){
+    var wholeSeconds = Math.floor(parseFloat(timeInSeconds));
+    var wholeMinutes = Math.floor(wholeSeconds / 60);
+    var displaySeconds = wholeSeconds % 60;
+    var finalTime = wholeMinutes + ':';
+
+    if (displaySeconds < 10) {
+            finalTime += '0' + displaySeconds;
+        } else {
+            finalTime += displaySeconds;
+        }
+
+        return finalTime;
+    };
